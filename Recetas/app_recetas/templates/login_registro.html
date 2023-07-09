@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <title>Aplicación de Recetas</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h1 class="text-primary">
+                        Aplicación de Recetas
+                    </h1>
+                </div>
+                <div class="col-5 d-flex-col alig-items-center p-5">
+                    <h2 >
+                        Registro
+                    </h2>
+                    <form action="/crear/usuario" method="POST">
+                        <div class="mb-3">
+                            <label for="nombre">
+                                Nombre:
+                            </label>
+                            <div></div>
+                            <input class="form-control mb-3" type="text" id="nombre" name="nombre">
+
+                            {% for mensaje in get_flashed_messages (category_filter = ['error_nombre'] ) :%}
+                                <div class="alert alert-danger" role="alert"> {{mensaje}} </div>
+                            {% endfor %}
+
+                        </div>
+                        <div>
+                            <label for="apellido">
+                                Apellido:
+                            </label>
+                            <div></div>
+                            <input class="form-control mb-3" type="text" id="apellido" name="apellido">
+
+                            {% for mensaje in get_flashed_messages (category_filter = ['error_apellido'] ) :%}
+                                <div class="alert alert-danger" role="alert"> {{mensaje}} </div>
+                            {% endfor %}
+
+                        </div>
+                        <div>
+                            <label for="email">
+                                Email:
+                            </label>
+                            <div></div>
+                            <input class="form-control mb-3" type="text" id="email" name="email">
+
+                            {% for mensaje in get_flashed_messages (category_filter = ['error_email'] ) :%}
+                                <div class="alert alert-danger" role="alert"> {{mensaje}} </div>
+                            {% endfor %}
+
+                        </div>
+                        <div>
+                            <label for="password">
+                                Password:
+                            </label>
+                            <div></div>
+                            <input class="form-control mb-3" type="password" id="password" name="password">
+
+                            {% for mensaje in get_flashed_messages (category_filter = ['error_password'] ) :%}
+                                <div class="alert alert-danger" role="alert"> {{mensaje}} </div>
+                            {% endfor %}
+
+                        </div>
+                        <div>
+                            <label for="confirmacion_password">
+                                Confirmar Password:
+                            </label>
+                            <div></div>
+                            <input class="form-control mb-3" type="password" id="confirmacion_password" name="confirmacion_password">
+                        </div>
+                        <button type="submit" class="btn1">Registrar</button>
+                    </form>
+                </div>
+                <div class="col-5 d-flex-col alig-items-center p-5">
+                    <h2 >
+                        Login
+                    </h2>
+                    <form action="/login" method="POST" class="formulario">
+                        <div>
+                            <label for="email_login">
+                                Email:
+                            </label>
+                            <div></div>
+                            <input class="form-control mb-3" type="text" id="email_login" name="email_login">
+
+                            {% for mensaje in get_flashed_messages (category_filter = ['error_email_login'] ) :%}
+                                <div class="alert alert-danger" role="alert"> {{mensaje}} </div>
+                            {% endfor %}
+
+                        </div>
+                        <div>
+                            <label for="password_login">
+                                Password:
+                            </label >
+                            <div></div>
+                            <input class="form-control mb-3" type="password" id="password_login" name="password_login">
+
+                            {% for mensaje in get_flashed_messages (category_filter = ['error_password_login'] ) :%}
+                                <div class="alert alert-danger" role="alert"> {{mensaje}} </div>
+                            {% endfor %}
+
+                        </div>
+                        <button type="submit" class="btn2">Login</button>
+                    </form>
+                </div>    
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    </body>    
+</html>

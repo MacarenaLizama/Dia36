@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <title>Aplicación de Recetas</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <h1>
+                        Bienvenid@, {{session['nombre']}} {{session['apellido']}}
+                    </h1>
+                </div>
+                <div class="col-4 d-flex">
+                    <form action="/recetas" method="GET">
+                        <button type="submit" class="btn btn-info">
+                            Regresa a las recetas
+                        </button>
+                    </form>
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="btn btn-secondary">
+                            logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <h2>{{receta.nombre}}</h2>
+                </div>
+                <div class="col-4 d-flex">
+                    <h4>Autor: {{receta.usuario.nombre}} {{receta.usuario.apellido}}</h4>
+                </div>
+            </div>
+            <div class="border border-black">
+                <div class="row p-3">
+                    <div class="col-4">
+                        Descripción:
+                    </div>
+                    <div class="col-8">
+                        {{receta.descripcion}}
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-4">
+                        Menos de 30 min?
+                    </div>
+                    <div class="col-8">
+                        {% if receta.menos_treinta == 1:%}
+                            Si
+                        {% else: %}
+                            No
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-4">
+                        Instrucciones:
+                    </div>
+                    <div class="col-8">
+                        {{receta.instrucciones}}
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-4">
+                        Fecha de Elaboración:
+                    </div>
+                    <div class="col-8">
+                        {{receta.fecha_elaboracion}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>   
+    </body>
+</html>
